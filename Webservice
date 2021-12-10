@@ -1,0 +1,24 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+mi_pagina = '''
+<html>
+<body>
+<h1>Hola Mundo!</h1>
+<h2>Feliz Navidad</h2>
+https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+</body>
+</html>
+'''
+
+@app.route('/')
+def hola_mundo():
+   return mi_pagina
+
+@app.route('/<name>')
+def hola_nombre(name):
+   return 'Hola %s!' % name
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
